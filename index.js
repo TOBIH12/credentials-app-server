@@ -8,7 +8,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-app.use(cors({origin: 'credentials-app-ts.vercel.app', credentials: true}));
+const allowedOrigins = ["https://credentials-app-ts.vercel.app"];
+app.use(cors({origin: allowedOrigins, methods: "GET,POST,PUT,DELETE", credentials: true}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
